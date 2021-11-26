@@ -9,7 +9,7 @@
     <form method="POST" class="post-form">{% csrf_token %}
         <b>Change: </b> {{ form.as_ul }}
         <button type="submit" class="btn btn-outline-light">OK</button>
-        <a href="{% url 'animal_list' %}">Back</a>
+        <a href="{% url 'post_list' %}">Back</a>
     </form>
 </div>
  

@@ -2,10 +2,10 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .forms import MoveForm
 from .models import Animal, Equipement
 
-def animal_list(request):
+def post_list(request):
     animals = Animal.objects.all()
     equipements = Equipement.objects.all()
-    return render(request, 'shopframe/animal_list.html', {'animals': animals, 'equipements': equipements})
+    return render(request, 'shopframe/post_list.html', {'animals': animals, 'equipements': equipements})
 
 def animal_detail(request, id_animal):
     animal = get_object_or_404(Animal, id_animal=id_animal)
