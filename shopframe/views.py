@@ -9,7 +9,6 @@ def post_list(request):
 
 def animal_detail(request, id_animal):
     animal = get_object_or_404(Animal, id_animal=id_animal)
-    lieu = animal.lieu
     form = MoveForm()
     if form.is_valid():
         ancien_lieu = get_object_or_404(Equipement, id_equip=animal.lieu.id_equip)
@@ -24,4 +23,4 @@ def animal_detail(request, id_animal):
         form = MoveForm()
         return render(request,
                   'shopframe/animal_detail.html',
-                  {'animal': animal, 'lieu': lieu, 'form': form})
+                  {'animal': animal, 'lieu': animal.lieu, 'form': form})

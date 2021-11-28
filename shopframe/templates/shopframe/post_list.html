@@ -2,29 +2,34 @@
 {% block content %}
 
 <h1 class='header center'>Welcome to the animal shop!</h1>
-<div class='container'>
-    {% for animal in animals %}
+<div class='container p-2'>
     <div class='row'>
-        <div class='col-6 center'>
-            <a href="{% url 'animal_detail' id_animal=animal.id_animal %}">{{animal.id_animal}}</a>
+        <div class='col-6'>
+            <div class='container border'>
+                {% for animal in animals %}
+                <div class='card' style="width:300px">
+                    <a href="{% url 'animal_detail' id_animal=animal.id_animal %}">{{animal.id_animal}}</a>
+                    {{animal.lieu}}, {{animal.etat}}
+
+                </div>
+                {% endfor %}
+            </div>
         </div>
-        <div class='col-6 center'>
-            {{animal.lieu}}, {{animal.etat}}
+        <div class='col-6'>
+            <div class='container'></div>
+            {% for equipement in equipements %}
+            <div class='card' style="width:300px">
+
+                {{equipement.id_equip}}
+
+
+                {{equipement.disponibilite}}
+
+            </div>
+            {% endfor %}
         </div>
     </div>
-    {% endfor %}
-    {% for equipement in equipements %}
-    <div class='row'>
-        <div class='col-6 center'>
-            {{equipement.id_equip}}
-        </div>
-        <div class='col-6 center'>
-            {{equipement.disponibilite}}
-        </div>
-    </div>
-    {% endfor %}
 </div>
-    
+</div>
+
 {% endblock %}
-
-
