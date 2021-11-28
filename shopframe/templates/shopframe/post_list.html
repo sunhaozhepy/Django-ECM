@@ -1,4 +1,5 @@
 {% extends 'shopframe/base.html' %}
+{% load static %}
 {% block content %}
 
 <h1 class='header center'>Welcome to the animal shop!</h1>
@@ -8,28 +9,26 @@
             <div class='container border'>
                 {% for animal in animals %}
                 <div class='card' style="width:300px">
-                    <a href="{% url 'animal_detail' id_animal=animal.id_animal %}">{{animal.id_animal}}</a>
-                    {{animal.lieu}}, {{animal.etat}}
-
+                    <div class='card-body'>
+                        <h4 class='card-title'>{{animal.id_animal}}</h4>
+                        <div class='card-text'>{{animal.lieu}}, {{animal.etat}}</div>
+                        <a class='btn btn-primary' href="{% url 'animal_detail' id_animal=animal.id_animal %}">Change details</a>
+                    </div>
                 </div>
                 {% endfor %}
             </div>
         </div>
         <div class='col-6'>
-            <div class='container'></div>
-            {% for equipement in equipements %}
-            <div class='card' style="width:300px">
-
-                {{equipement.id_equip}}
-
-
-                {{equipement.disponibilite}}
-
+            <div class='container border'></div>
+                {% for equipement in equipements %}
+                <div class='card' style="width:300px">
+                    <div class='center'>{{equipement.id_equip}}</div>
+                    <div class='center'>{{equipement.disponibilite}}</div>
+                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
     </div>
-</div>
 </div>
 
 {% endblock %}
